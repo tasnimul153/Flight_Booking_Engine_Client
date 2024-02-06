@@ -1,0 +1,114 @@
+.passengerAndClassDropdown {
+    position: absolute;
+    width: 400px;
+    height: max-content;
+    padding-bottom: 15px;
+    left: 0;
+    top: 110px;
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.4);
+    z-index: 10;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 200px;
+    border-radius: 15px;
+
+    .container {
+
+        .radio-inputs {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            box-sizing: border-box;
+            box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
+            width: 400px;
+            padding: 10px;
+            left: -25px;
+            font-size: 14px;
+            margin-bottom: 10px;
+
+            .radio {
+                flex: 1 1 auto;
+                text-align: center;
+                .name {
+                    display: flex;
+                    cursor: pointer;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 0.5rem;
+                    border: none;
+                    padding: .5rem 0;
+                    color: rgba(51, 65, 85, 1);
+                    transition: all .3s ease-in-out;
+                }
+
+                input {
+                    display: none;
+                }
+
+                :hover {
+                    background-color: rgba(35, 150, 196, 0.199);
+                    border-radius: 10px;
+                    padding: 8px 0px;
+                }
+            }
+            .active-radio {
+                background-color: rgba(35, 150, 196, 0.199);
+                border-radius: 10px;
+                font-size: bold;
+                padding: 0px 5px;
+                transition: all .3s ease-in-out;
+                .name {
+                    color: rgb(0, 95, 133);
+                }
+                :hover {
+                    background-color: transparent;
+                }
+            }
+        }
+        .passengerCount {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            .adultsTitle {
+                margin: 0px 0px 0px -10px;
+            }
+            .counterButtonContainer {
+                width: 100px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                .counterButton {
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    border: 1px solid rgb(56, 151, 206);
+                    background-color: transparent;
+                    font-size: 20px;
+                    color: rgb(56, 151, 206);
+                    &:hover {
+                        background-color: rgba(56, 151, 206, 0.582);
+                        border: none;
+                        color: white;
+                    }
+                }
+
+                .count {
+                    color: rgb(0, 138, 202);
+                }
+            }
+        }
+    }
+}
+
+.passengerAndClassDropdown.activeDrop {
+  opacity: 1;
+  visibility: visible;
+}

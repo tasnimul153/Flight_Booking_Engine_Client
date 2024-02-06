@@ -1,0 +1,535 @@
+:root {
+  --primary-color: hsl(199, 100%, 33%);
+  --secondary-color: hsl(187, 85%, 43%);
+  --gradient-color: linear-gradient(to right, #002677, #0066aa);
+  --white-color: hsl(0, 0%, 100%);
+  --black-color: hsl(201, 33%, 16%);
+  --text-color: hsl(240, 4%, 36%);
+  --whiteColorDeam: hsl(0, 0%, 93%);
+  --greyText: rgb(190, 190, 190);
+  --bodyColor: rgb(240, 240, 240);
+  --inputColor: rgb(239, 239, 239);
+  --cardBG: rgb(225, 225, 225);
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+.slides img {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  opacity: 0;
+}
+
+.slide.active {
+  opacity: 1;
+  animation: slideIn 3s forwards;
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.home {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  background-color: white;
+  z-index: 1;
+}
+.home .overlayAnimation {
+  top: 0;
+  left: 0;
+  z-index: 2;
+  height: 60%;
+  width: 80%;
+  position: absolute;
+  opacity: 0;
+  left: 10vw;
+  background: linear-gradient(rgba(0, 0, 0, 0.699), rgba(0, 0, 0, 0.267), rgba(255, 255, 255, 0.411), white);
+  mix-blend-mode: hard-light;
+  z-index: 2;
+}
+.home .overlay {
+  top: 0;
+  left: 0;
+  z-index: 2;
+  height: 60%;
+  width: 80%;
+  position: absolute;
+  left: 10vw;
+  background: linear-gradient(rgba(0, 0, 0, 0.637), rgba(158, 158, 158, 0.322), white);
+  mix-blend-mode: hard-light;
+  z-index: 2;
+}
+.home img {
+  top: 0;
+  left: 0;
+  z-index: 2;
+  position: absolute;
+  width: 80%;
+  height: 60%;
+  left: 10vw;
+  z-index: 1;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.home .homeContent {
+  width: 80%;
+  height: 100vh;
+  padding: 8rem 1.5rem 3rem;
+  display: flex;
+  row-gap: 3rem;
+  position: relative;
+  top: -6rem;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  margin: auto;
+  color: white;
+  z-index: 3;
+}
+.home .homeContent .textDiv {
+  padding: 2rem 0 0 0;
+  width: -moz-fit-content;
+  width: fit-content;
+  position: absolute;
+  top: 20%;
+  left: 3.3vw;
+}
+.home .homeContent .textDiv .smallText {
+  font-size: 13px;
+  text-transform: uppercase;
+}
+.home .homeContent .textDiv .homeTitle {
+  font-size: 1.8rem;
+}
+.home .homeContent .cardDiv {
+  background-color: white;
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+  width: 98%;
+  padding: 2rem;
+  border-radius: 5px;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  flex-direction: column;
+  color: var(--black-color);
+  font-size: 1.2rem;
+  border: none;
+  top: 160px;
+  margin: 0 auto;
+  font-weight: 500;
+  z-index: 8;
+  animation: fadeInUp 0.5s ease-in-out forwards;
+}
+.home .homeContent .cardDiv #overlayImg {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 15px;
+  z-index: -1;
+  background: rgba(255, 255, 255, 0.6);
+}
+.home .homeContent .cardDiv .radioBox {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: space-between;
+  width: -moz-max-content;
+  width: max-content;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.home .homeContent .cardDiv .radioBox .activeRadio {
+  border-radius: 100px;
+  background-color: rgba(0, 156, 228, 0.226);
+}
+.home .homeContent .cardDiv .radioBox .radio_input {
+  display: inline-block;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  border: none;
+  margin: 0;
+  width: -moz-max-content;
+  width: max-content;
+  padding: 0 0.5rem;
+  transition: all 0.2s ease-in-out;
+}
+.home .homeContent .cardDiv .radioBox .radio_input:hover {
+  border-radius: 100px;
+  cursor: pointer;
+  background-color: rgba(0, 156, 228, 0.219);
+}
+.home .homeContent .cardDiv .radioBox .radio_input .radio_button {
+  width: 12px;
+  height: 12px;
+  accent-color: var(--whiteColorDeam);
+}
+.home .homeContent .cardDiv .radioBox .radio_input .radio_label {
+  margin-left: 0.3rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: black;
+  cursor: pointer;
+}
+.home .homeContent .cardDiv .radioBox .radio_input #activeIcon {
+  position: absolute;
+  display: block;
+  top: 8px;
+  left: 7px;
+  height: 14px;
+  width: 14px;
+  color: rgb(0, 102, 219);
+}
+.home .homeContent .cardDiv .radioBox .radio_input #inactiveIcon {
+  display: none;
+}
+.home .homeContent .cardDiv .inputBox {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  margin-bottom: 10px;
+  height: 120px;
+  gap: 5px;
+}
+.home .homeContent .cardDiv .inputBox .inputFieldBox {
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.home .homeContent .cardDiv .inputBox .inputFieldBox #swapIcon {
+  padding: 5px;
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  top: 40%;
+  right: -15px;
+  position: absolute;
+  background-color: var(--white-color);
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(128, 128, 128, 0.274);
+  z-index: 101;
+  color: var(--primary-color);
+  transition: all 0.4s ease-in-out;
+}
+.home .homeContent .cardDiv .inputBox .inputFieldBox #swapIcon:hover {
+  transform: scale(1.1);
+  transform: rotate(180deg);
+}
+.home .homeContent .cardDiv .inputBox .inputFieldBox .dropdownListSearch {
+  position: absolute;
+  top: 110px;
+  width: 350px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.4);
+  z-index: 10;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 200px;
+  border-radius: 5px;
+}
+.home .homeContent .cardDiv .inputBox .inputFieldBox .dropdownListSearch .dropdownListSearch::-webkit-scrollbar {
+  width: 5px;
+}
+.home .homeContent .cardDiv .inputBox .inputFieldBox .dropdownListSearch .dropdownListSearch::-webkit-scrollbar-track {
+  background: transparent;
+}
+.home .homeContent .cardDiv .inputBox .inputFieldBox .dropdownListSearch .dropdownListSearch::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+.home .homeContent .cardDiv .inputBox .inputFieldBox .dropdownListSearch .searchBox {
+  position: sticky;
+  top: 0;
+  height: 35px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  background-color: white;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.267);
+}
+.home .homeContent .cardDiv .inputBox .inputFieldBox .dropdownListSearch .searchBox #searchIcon {
+  height: 24px;
+  width: 24px;
+  margin: 0px 10px;
+  color: var(--primary-color);
+}
+.home .homeContent .cardDiv .inputBox .inputFieldBox .dropdownListSearch .searchBox input {
+  height: 100%;
+  width: 100%;
+  border: none;
+  padding: 2px 0px;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: rgb(36, 36, 36);
+  letter-spacing: 1px;
+}
+.home .homeContent .cardDiv .inputBox .inputFieldBox .dropdownListSearch .searchBox input:focus {
+  outline: none;
+}
+@keyframes loadingBarAnimation {
+  to {
+    background-position: -200% center;
+  }
+}
+.home .homeContent .cardDiv .inputBox .inputFieldBox .dropdownListSearch .horizontal-loader {
+  width: 100%;
+  height: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 33px;
+  left: 0;
+  z-index: 100;
+  background: linear-gradient(to right, #ffffff, #0066aa, #ffffff);
+  background-size: 200% auto;
+  animation: loadingBarAnimation 1s linear infinite;
+}
+.home .homeContent .cardDiv .inputBox .inputFieldBox .dropdownListSearch .dropdownItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.home .homeContent .cardDiv .inputBox .inputFieldBox .dropdownListSearch .dropdownItem:hover {
+  background-color: rgb(243, 243, 243);
+}
+.home .homeContent .cardDiv .inputBox .inputFieldBox .dropdownListSearch .MetaLocation {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  width: 88%;
+  overflow-x: hidden;
+}
+.home .homeContent .cardDiv .inputBox .inputFieldBox .dropdownListSearch .MetaLocation .airport-name {
+  font-size: 0.65rem;
+}
+.home .homeContent .cardDiv .inputBox .mainInput {
+  outline: none;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  color: var(--black-color);
+  background-color: white;
+  border: 1px solid rgba(54, 54, 54, 0.24);
+  border-radius: 5px;
+  height: 95px;
+}
+.home .homeContent .cardDiv .inputBox .mainInput:hover {
+  border: 1px solid rgba(128, 128, 128, 0.5);
+}
+.home .homeContent .cardDiv .inputBox .mainInput .dataBox {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: pointer;
+}
+.home .homeContent .cardDiv .inputBox .mainInput .dataBox .constant-tag {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--greyText);
+  position: relative;
+}
+.home .homeContent .cardDiv .inputBox .mainInput .dataBox .constant-tag #dropdownArrow {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: -2px;
+  color: var(--greyText);
+}
+.home .homeContent .cardDiv .inputBox .mainInput .dataBox .Middle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgb(80, 80, 80);
+}
+.home .homeContent .cardDiv .inputBox .mainInput .dataBox .Last {
+  font-size: 0.65rem;
+  font-weight: 500;
+  padding-top: 10px;
+  color: rgba(94, 94, 94, 0.795);
+}
+.home .homeContent .cardDiv .inputBox .DateInactive {
+  background-color: rgb(241, 241, 241);
+}
+.home .homeContent .cardDiv .inputBox .DateInactive:hover {
+  border: 1px solid rgba(128, 128, 128, 0.247);
+}
+.home .homeContent .searchBtn {
+  outline: none;
+  padding: 0.5rem;
+  width: 8rem;
+  height: 50px;
+  border: none;
+  border-radius: 4px; /* Slightly rounded corners for a modern look */
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  position: absolute;
+  z-index: 1; /* Adjust z-index if needed */
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%); /* Center the button horizontally */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #007dd1;
+  color: #ffffff;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+.home .homeContent .searchBtn:hover, .home .homeContent .searchBtn:focus { /* Combine hover and focus for keyboard and mouse users */
+  background-color: #005fa3; /* Slightly darker shade on hover/focus */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover/focus */
+  transform: translateY(-2px) translateX(-50%); /* Maintain centering while moving */
+}
+.home .homeContent .searchBtn:active {
+  background-color: #004d8a; /* Even darker shade for active state */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reset shadow to mimic pressing down */
+  transform: translateY(0px) translateX(-50%); /* Reset position */
+}
+.home .homeContent #searchIcon {
+  height: 20px;
+  width: 20px;
+  margin-right: 5px; /* Slightly more space between icon and text */
+}
+
+@media (max-width: 1024px) {
+  body {
+    background-color: white;
+  }
+  .home .overlayAnimation {
+    top: 0;
+    left: 0;
+    z-index: 2;
+    height: 80%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    opacity: 1;
+    transform: rotate3d(0, 0, 0, 0deg);
+    background: linear-gradient(to left, rgb(0, 0, 0), rgba(255, 255, 255, 0.575), black);
+    animation: backgroundAnimation 1s infinite alternate ease;
+  }
+  .home .overlay {
+    top: 0;
+    left: 0;
+    z-index: 2;
+    height: 80%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.699), rgba(0, 0, 0, 0.267), white);
+    mix-blend-mode: hard-light;
+    z-index: 2;
+  }
+  .home img {
+    top: 0;
+    left: 0;
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    height: 80%;
+    left: 0;
+    z-index: 1;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .home .homeContent .cardDiv {
+    background-color: white;
+    height: 800px;
+    width: 96%;
+    padding: 2rem;
+    border-radius: 5px;
+    flex-wrap: wrap;
+  }
+  .home .homeContent .cardDiv .radioBox {
+    margin: 0 auto 20px auto;
+  }
+  .home .homeContent .cardDiv .inputBox {
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 10px;
+    height: -moz-fit-content;
+    height: fit-content;
+    gap: 5px;
+  }
+  .home .homeContent .cardDiv .inputBox .inputFieldBox #swapIcon {
+    display: none;
+  }
+  @keyframes loadingBarAnimation {}
+  .home .homeContent .searchBtn {
+    outline: none;
+    padding: 0.5rem;
+    width: 7rem;
+    height: 40px;
+    border: none;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+    top: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #007dd1;
+    color: #ffffff;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  .home .homeContent .searchBtn:hover, .home .homeContent .searchBtn:focus {
+    background-color: #005fa3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px) translateX(-50%);
+  }
+  .home .homeContent .searchBtn:active {
+    background-color: #004d8a;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(0px) translateX(-50%);
+  }
+  .home .homeContent #searchIcon {
+    height: 20px;
+    width: 20px;
+    margin-right: 5px;
+  }
+}/*# sourceMappingURL=home.css.map */

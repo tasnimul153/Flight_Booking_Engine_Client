@@ -1,0 +1,88 @@
+:root {
+  --primary-color: hsl(199, 100%, 33%);
+  --secondary-color: hsl(187, 85%, 43%);
+  --gradient-color: linear-gradient(to right, #002677, #0066aa);
+  --white-color: hsl(0, 0%, 100%);
+  --black-color: hsl(201, 33%, 16%);
+  --text-color: hsl(240, 4%, 36%);
+  --whiteColorDeam: hsl(0, 0%, 93%);
+  --greyText: rgb(190, 190, 190);
+  --bodyColor: rgb(240, 240, 240);
+  --inputColor: rgb(239, 239, 239);
+  --cardBG: rgb(225, 225, 225);
+}
+
+.footer {
+  width: 100%;
+  background: var(--whiteColorDeam);
+  color: rgb(17, 17, 17);
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 2rem;
+  gap: 20px;
+  position: relative;
+  z-index: 10;
+  transition: all 0.3s ease-in-out;
+}
+.footer .footer__container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 80%;
+  margin: 0 auto;
+  height: -moz-fit-content;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+}
+.footer .footer__container .infoBox {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: space-between;
+}
+.footer .footer__container .infoBox .about {
+  width: 50%;
+  text-align: justify;
+}
+.footer .footer__container .infoBox .about h2 {
+  padding-bottom: 10px;
+}
+.footer .footer__container .infoBox .services ul, .footer .footer__container .infoBox .contact ul {
+  padding-top: 10px;
+}
+.footer .footer__container .infoBox .services ul li, .footer .footer__container .infoBox .contact ul li {
+  padding-bottom: 5px;
+}
+.footer .footer__container .infoBox .services ul li .bold-span, .footer .footer__container .infoBox .contact ul li .bold-span {
+  font-weight: 600;
+  color: rgb(58, 58, 58);
+}
+.footer .footer__container .iconsGroup {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-top: 20px;
+  border-top: 1px solid var(--greyText);
+}
+.footer .footer__container .iconsGroup .icons {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.footer .footer__container .iconsGroup .icons:hover {
+  transform: scale(1.1);
+}
+.footer .footer__container .footer-last {
+  height: 10px;
+  width: 100%;
+  text-align: center;
+}/*# sourceMappingURL=footer.css.map */

@@ -1,0 +1,61 @@
+/* Customizing the header */
+.react-datepicker__header {
+    background-color: rgb(0, 91, 228);
+    color: white;
+}
+
+/* Customizing the current date */
+.react-datepicker__day--selected {
+    background-color: #34bd68;
+}
+
+/* Customizing the today highlight 
+.react-datepicker__day--today {
+    border: none;
+    border-radius: 50px;
+    background-color: #ffd28e;
+}*/
+
+/* Customizing the days of the week */
+.react-datepicker__day-name {
+    color: #e7e7e7dc;
+}
+
+/* Customizing Month and year title */
+.react-datepicker__current-month,
+.react-datepicker__current-year {
+    color: #e7e7e7;
+}
+
+/* Customizing the days of the month */
+.react-datepicker__month-dropdown,
+.react-datepicker__year-dropdown {
+  background-color: #333;
+  color: white;
+}
+  
+/* Customizing hover state */
+.react-datepicker__day:hover {
+    border-radius: 50%;
+    background-color: lightgrey;
+}
+
+/* Customizing the arrows */
+.react-datepicker__navigation--previous,
+.react-datepicker__navigation--next {
+    top: 12px;
+    border-color: white;
+}
+
+.calendar {
+    border: 1px solid rgb(209, 209, 209);
+    padding: 3px 5px;
+    border-radius: 5px;
+    font-size: 15px;
+    letter-spacing: 1px;
+    position: relative;
+    top: -50px;
+    :focus {
+        outline: none;
+    }
+}

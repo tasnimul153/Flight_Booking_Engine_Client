@@ -1,0 +1,316 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.container-reservation {
+  width: 100vw;
+  height: -moz-max-content;
+  height: max-content;
+  padding: 0 30px;
+  background-color: white;
+}
+.container-reservation .final-details {
+  padding-top: 80px;
+  width: 82%;
+  height: 100%;
+  margin: 0 auto;
+}
+.container-reservation .final-details h3 {
+  font-size: 40px;
+  font-weight: 100;
+  color: rgb(0, 46, 133);
+}
+.container-reservation .final-details .display-details {
+  padding: 30px 0px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.container-reservation .final-details .display-details .customer-inputs {
+  width: 50%;
+  height: 100%;
+  padding-right: 20px;
+  border-right: 1px solid rgba(48, 48, 48, 0.151);
+}
+.container-reservation .final-details .display-details .customer-inputs .each-customer {
+  margin-bottom: 30px;
+  border-bottom: 1px solid rgba(48, 48, 48, 0.151);
+  padding-bottom: 20px;
+}
+.container-reservation .final-details .display-details .customer-inputs .each-customer .passenger-number-label {
+  font-size: 20px;
+  color: rgb(0, 46, 133);
+  margin-bottom: 2px;
+  font-weight: 600;
+}
+.container-reservation .final-details .display-details .customer-inputs .input-group {
+  height: -moz-fit-content;
+  height: fit-content;
+  gap: 30px;
+}
+.container-reservation .final-details .display-details .customer-inputs .input-group .input-box {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+.container-reservation .final-details .display-details .customer-inputs .input-group .input-box label {
+  font-size: 15px;
+  color: rgb(0, 46, 133);
+  margin-bottom: 2px;
+  font-weight: 600;
+}
+.container-reservation .final-details .display-details .customer-inputs .input-group .input-box input {
+  width: 100%;
+  height: 30px;
+  border: 1px solid rgba(0, 40, 116, 0.411);
+  padding: 0 10px;
+  font-size: 15px;
+  font-weight: 100;
+  color: rgb(0, 46, 133);
+}
+.container-reservation .final-details .display-details .customer-inputs .input-group .input-box input:focus {
+  outline: none;
+}
+.container-reservation .final-details .display-details .customer-inputs .name-section {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.container-reservation .final-details .display-details .customer-inputs .contact-section {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.container-reservation .final-details .display-details .customer-inputs .contact-section .input-box input[type=email],
+.container-reservation .final-details .display-details .customer-inputs .contact-section .input-box input[type=text] {
+  width: 100%;
+  height: 30px;
+  border: 1px solid rgba(0, 40, 116, 0.411);
+  border-left: none;
+  padding: 0 10px 0 35px;
+  font-size: 15px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  color: rgb(0, 46, 133);
+}
+.container-reservation .final-details .display-details .customer-inputs .contact-section .input-box input[type=email]:focus,
+.container-reservation .final-details .display-details .customer-inputs .contact-section .input-box input[type=text]:focus {
+  outline: none;
+}
+.container-reservation .final-details .display-details .customer-inputs .contact-section .input-box .icon {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  top: -30px;
+  left: 0px;
+  background-color: rgba(0, 40, 116, 0.411);
+  border: none;
+  color: white;
+  padding: 5px;
+}
+.container-reservation .final-details .display-details .customer-inputs .name-section,
+.container-reservation .final-details .display-details .customer-inputs .contact-section {
+  padding: 20px 20px 0px 20px;
+}
+.container-reservation .final-details .display-details .customer-inputs .demographic-section {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  justify-content: space-between;
+  padding: 20px 20px 0px 20px;
+}
+.container-reservation .final-details .display-details .customer-inputs .demographic-section .input-box input[type=text] {
+  border: none;
+  border-bottom: 1px solid rgba(0, 40, 116, 0.411);
+}
+.container-reservation .final-details .display-details .customer-inputs .demographic-section .input-box .dropDownGroup {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.container-reservation .final-details .display-details .customer-inputs .demographic-section .input-box .dropDownGroup .dropdown-item {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+}
+.container-reservation .final-details .display-details .customer-inputs .demographic-section .input-box .dropDownGroup .dropdown-item label {
+  font-size: 12px;
+  color: rgb(0, 46, 133);
+  margin-bottom: 2px;
+  font-weight: 600;
+}
+.container-reservation .final-details .display-details .customer-inputs .demographic-section .input-box .dropDownGroup .dropdown-item select {
+  width: 100%;
+  height: 30px;
+  border: 1px solid rgba(0, 40, 116, 0.411);
+  padding: 0 10px;
+  font-size: 15px;
+  font-weight: 100;
+  color: rgb(0, 46, 133);
+}
+.container-reservation .final-details .display-details .customer-inputs .demographic-section .input-box .dropDownGroup .dropdown-item select:focus {
+  outline: none;
+}
+.container-reservation .final-details .display-details .customer-inputs .demographic-section .input-box .dropDownGroup .dropdown-item:focus {
+  outline: none;
+}
+.container-reservation .final-details .display-details .customer-inputs .demographic-section .input-box select[name=gender] {
+  border: none;
+  margin-top: 25px;
+  border-bottom: 1px solid rgba(0, 40, 116, 0.411);
+  font-size: 15px;
+  color: rgb(0, 46, 133);
+}
+.container-reservation .final-details .display-details .customer-inputs .demographic-section .input-box select[name=gender]:focus {
+  outline: none;
+}
+.container-reservation .final-details .display-details .customer-inputs .card-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+  background-color: rgba(255, 234, 163, 0.24);
+}
+.container-reservation .final-details .display-details .customer-inputs .card-section .input-box {
+  width: 100%;
+}
+.container-reservation .final-details .display-details .customer-inputs .card-section .input-box label {
+  display: block;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+}
+.container-reservation .final-details .display-details .customer-inputs .card-section .input-box input[type=text] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.container-reservation .final-details .display-details .customer-inputs .card-section .input-box .dropDownGroup {
+  display: flex;
+  justify-content: space-between;
+}
+.container-reservation .final-details .display-details .customer-inputs .card-section .input-box .dropDownGroup .dropdown-item {
+  width: 45%;
+}
+.container-reservation .final-details .display-details .customer-inputs .card-section .input-box .dropDownGroup .dropdown-item label {
+  display: block;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+}
+.container-reservation .final-details .display-details .customer-inputs .card-section .input-box .dropDownGroup .dropdown-item select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.container-reservation .final-details .display-details .customer-inputs .card-section .card-meta-1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 20px;
+}
+.container-reservation .final-details .display-details .customer-inputs .card-section .card-meta-1 .input-box label {
+  display: block;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+}
+.container-reservation .final-details .display-details .customer-inputs .card-section .card-meta-1 .input-box input[type=text] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.container-reservation .final-details .display-details .customer-inputs .card-section .card-meta-2 .dropDownGroup, .container-reservation .final-details .display-details .customer-inputs .card-section .card-meta-3 .dropDownGroup {
+  display: flex;
+  margin-top: 20px;
+  gap: 20px;
+}
+.container-reservation .final-details .display-details .customer-inputs .card-section .card-meta-2 .dropDownGroup .dropdown-item, .container-reservation .final-details .display-details .customer-inputs .card-section .card-meta-3 .dropDownGroup .dropdown-item {
+  width: 95%;
+}
+.container-reservation .final-details .display-details .customer-inputs .card-section .card-meta-2 .dropDownGroup .dropdown-item label, .container-reservation .final-details .display-details .customer-inputs .card-section .card-meta-3 .dropDownGroup .dropdown-item label {
+  display: block;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+}
+.container-reservation .final-details .display-details .customer-inputs .card-section .card-meta-2 .dropDownGroup .dropdown-item select, .container-reservation .final-details .display-details .customer-inputs .card-section .card-meta-3 .dropDownGroup .dropdown-item select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.container-reservation .final-details .display-details .customer-inputs .card-section .card-meta-2 .dropDownGroup #cvv, .container-reservation .final-details .display-details .customer-inputs .card-section .card-meta-3 .dropDownGroup #cvv {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: 42px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+.container-reservation .final-details .display-details .customer-inputs .card-section .card-meta-3 .dropDownGroup {
+  display: flex;
+  margin-top: 20px;
+  flex-direction: column;
+  gap: 20px;
+}
+.container-reservation .final-details .display-details .customer-inputs .card-section .card-meta-3 .dropDownGroup .grid-bi {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+}
+.container-reservation .final-details .display-details .customer-inputs .card-section .card-meta-3 .dropDownGroup .dropdown-item {
+  width: 100%;
+}
+.container-reservation .final-details .display-details .customer-inputs .card-section .card-meta-3 .dropDownGroup .dropdown-item label {
+  display: block;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+}
+.container-reservation .final-details .display-details .customer-inputs .card-section .card-meta-3 .dropDownGroup .dropdown-item select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.container-reservation .final-details .display-details .customer-inputs .card-section .card-meta-4 .dropDownGroup {
+  display: flex;
+  gap: 20px;
+  flex-direction: row;
+}
+.container-reservation .final-details .display-details .booking-details {
+  width: 50%;
+  height: 100%;
+}
+.container-reservation .final-details .display-details .booking-details .information-container {
+  padding: 20px;
+}
+.container-reservation .final-details .display-details .booking-details .information-container .flight-detail-container {
+  padding: 20px;
+}
+.container-reservation .final-details .display-details .confirmBtn {
+  width: 150px;
+  background-color: orange;
+  border: none;
+  padding: 5px;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}/*# sourceMappingURL=Reservation.css.map */
