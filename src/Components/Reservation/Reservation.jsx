@@ -1,6 +1,7 @@
 import { createContext, useState, React, useContext, useEffect } from "react";
 import { json, useLocation, useNavigate, useParams } from "react-router-dom";
 import './Reservation.css';
+import { FaLuggageCart } from "react-icons/fa";
 import { FlightDetailsContext } from "../Contexts/FlightDetailContext";
 import { MdOutlineMail } from "react-icons/md";
 import { FiPhoneCall } from "react-icons/fi";
@@ -32,8 +33,8 @@ const Reservation = () => {
         const firstName = document.getElementById('firstName').value;
         const lastName = document.getElementById('lastName').value;
         const phone = document.getElementById('phone').value;
-    
-        const emailSubject = 'Ticket Issue Request';
+
+        const emailSubject = 'Ticket Request';
         /*const emailBody = `
             Ticket issue request from ${firstName} ${lastName},
             \n\nPassenger Details:
@@ -55,36 +56,58 @@ const Reservation = () => {
         `;*/
 
         const emailBody = ``;
-        
+
         fetch(`${process.env.REACT_APP_SEND_MAIL_URL}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                to: 'shaheen@a1travel.net', 
+                to: 'shaheen@a1travel.net',
                 subject: emailSubject,
                 body: emailBody
             }),
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Success:', data);
-            alert('A booking agent will confirm your booking soon...Thank you!');
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Success:', data);
+                alert('A booking agent will confirm your booking soon...Thank you!');
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
         //console.log(metaData);
         //alert(passengerCount);
 
         //console.log(jsonPayloadFlightOffers);
     };
+
+    useEffect(() => {
+        const printMetaData = () => {
+            console.log(metaData);
+        };
+        printMetaData();
+    }, []);
+
+    const currencySymbols = {
+        USD: '$',
+        EUR: '€',
+        GBP: '£'
+    };
+
+    const price = {
+        grandTotal: metaData.flight.data.flightOffers[0].price.grandTotal,
+        currency: metaData.flight.data.flightOffers[0].price.currency,
+        symbol: currencySymbols[metaData.flight.data.flightOffers[0].price.currency] || metaData.flight.data.flightOffers[0].price.currency
+    }
+
+    const dictionaries = metaData.dictionary;
+    const flightSegments = metaData.flight.data.flightOffers[0].itineraries[0];
 
     return (
         <div className="container-reservation">
@@ -265,15 +288,66 @@ const Reservation = () => {
                         <div className="information-container">
                             <div className="flight-detail-container">
                                 <h3 className="title-right">Flight Details</h3>
+
                                 <div className="flightDetails">
-                                    
+                                    <div className="priceDisplay">
+                                        <p>{price.symbol}{price.grandTotal}</p>
+                                    </div>
+                                    {
+                                        flightSegments.segments.map((segment, index) => (
+                                            <div className="segmentContainer" key={index}>
+                                                <div className="carrier-info" >
+                                                    <div className="carrier">
+                                                        <img src={`https://images.kiwi.com/airlines/64/${segment.carrierCode}.png`} alt={segment.carrierCode} />
+                                                        <div className="signature">
+                                                            <h3>{dictionaries.carriers[segment.carrierCode]}</h3>
+                                                            <p>{dictionaries.aircraft[segment.aircraft.code]}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div className="travel-comfort">
+                                                        {segment.numberOfStops === 0 ? <p className="stopOver" style={{ color: "rgb(0, 194, 97)" }}>Direct</p> : <p className="stopOver" style={{ color: "orange" }}>{segment.numberOfStops} stop</p>}
+                                                        {<p className="duration">{
+                                                            segment.duration.split('T')[1].split('H')[0] + ` ${segment.duration.split('T')[1].split('H')[0] > 9 ? 'Hours' : 'Hour'}` + ' ' + segment.duration.split('T')[1].split('H')[1].split('M')[0] + `${segment.duration.split('T')[1].split('H')[1].split('M')[0] > 9 ? ' Minutes' : ' Minute'}`
+                                                        }</p>}
+                                                    </div>
+                                                </div>
+                                                <div className="destinations">
+                                                    <div className="departure-info">
+                                                        <h3 className="iataCode">{segment.departure.iataCode}</h3>
+                                                        <p className="departure-date date">{`${new Date(segment.departure.at).getDate()}
+                                                    ${new Date(segment.departure.at).toLocaleString('default', { month: 'short' })},
+                                                    ${new Date(segment.departure.at).getFullYear()}`}</p>
+                                                        <p className="departure-time time">{segment.departure.at.split('T')[1].split(':')[0] + ':' + segment.departure.at.split('T')[1].split(':')[1]}</p>
+                                                    </div>
+                                                    <div className="arrival-info">
+                                                        <h3 className="iataCode">{segment.arrival.iataCode}</h3>
+                                                        <p className="arrival-date date">{`${new Date(segment.arrival.at).getDate()}
+                                                    ${new Date(segment.arrival.at).toLocaleString('default', { month: 'short' })},
+                                                    ${new Date(segment.arrival.at).getFullYear()}`}</p>
+                                                        <p className="arrival-time time">{segment.arrival.at.split('T')[1].split(':')[0] + ':' + segment.arrival.at.split('T')[1].split(':')[1]}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="features">
+                                                    <div className="cabinType feature">{metaData.flight.data.flightOffers[0].travelerPricings[0].fareDetailsBySegment[index].cabin}</div>
+                                                    <div className="circle"></div>
+                                                    <div className="classType feature">CLASS {metaData.flight.data.flightOffers[0].travelerPricings[0].fareDetailsBySegment[index].class}</div>
+                                                    <div className="circle"></div>
+                                                    <div className="fareType feature">{metaData.flight.data.flightOffers[0].travelerPricings[0].fareDetailsBySegment[index].fareBasis}</div>
+                                                    <div className="circle"></div>
+                                                    <div className="baggage feature">CHECKIN {`${metaData.flight.data.flightOffers[0].travelerPricings[0].fareDetailsBySegment[index].includedCheckedBags.quantity} x ${metaData.flight.data.flightOffers[0].travelerPricings[0].fareDetailsBySegment[index].includedCheckedBags.weight ? metaData.flight.data.flightOffers[0].travelerPricings[0].fareDetailsBySegment[index].includedCheckedBags.weight : '0' } kg`}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))
+                                    }
+                                    <button className="confirmBtn" onClick={handleOnClick}>Confirm booking</button>
                                 </div>
+
                             </div>
                             <div className="each-passenger-detail">
 
                             </div>
                         </div>
-                        <button className="confirmBtn" onClick={handleOnClick}>Confirm booking</button>
                     </div>
                 </div>
             </div>

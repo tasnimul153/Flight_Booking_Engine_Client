@@ -38,6 +38,60 @@ body {
     transform: translateY(1px);
   }
 }
+@keyframes gradient-animation_2 {
+  0% {
+    transform: translateX(-20%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(50vw);
+    opacity: 1;
+  }
+}
+@keyframes fadeInOut {
+  0% {
+    transform: matrix3d() -10px;
+  }
+  50% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(200px);
+  }
+}
+.loadingBar {
+  display: block;
+  --height-of-loader: 4px;
+  --loader-color: #0071e2;
+  width: 130px;
+  height: var(--height-of-loader);
+  border-radius: 30px;
+  background-color: rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.loadingBar::before {
+  content: "";
+  position: absolute;
+  background: var(--loader-color);
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  border-radius: 30px;
+  animation: moving 1s ease-in-out infinite;
+}
+
+@keyframes moving {
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+    right: 0;
+    left: unset;
+  }
+}
 .loading {
   width: 78vw;
   height: 250px;
@@ -57,7 +111,7 @@ body {
   border-radius: 5px;
   overflow: hidden;
   margin-top: 100px;
-  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.123);
 }
 .loading .controller-loading {
   width: 35%;
@@ -66,7 +120,7 @@ body {
   content: "";
   position: absolute;
   width: 60%;
-  height: 250px;
+  height: 500px;
   top: 100px;
   left: 0;
   background: linear-gradient(110deg, rgba(227, 227, 227, 0) 0%, rgba(227, 227, 227, 0) 40%, rgba(227, 227, 227, 0.5) 50%, rgba(227, 227, 227, 0) 60%, rgba(227, 227, 227, 0) 100%);
@@ -118,13 +172,40 @@ body {
   height: 10px;
   width: 92%;
 }
-@keyframes gradient-animation_2 {
-  0% {
-    transform: translateX(-30%);
-  }
-  100% {
-    transform: translateX(95%);
-  }
+
+.container-unavailable {
+  width: 70vw;
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  margin: 0 auto;
+  position: relative;
+  top: 200px;
+  border: 1px solid rgba(0, 0, 0, 0.123);
+}
+.container-unavailable .unavailable {
+  font-size: 30px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.5);
+}
+.container-unavailable button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  top: 20px;
+  transition: all 0.4s ease-in-out;
+}
+.container-unavailable button:hover {
+  background-color: var(--secondary-color);
 }
 
 .Container {
@@ -507,6 +588,7 @@ body {
 }
 .Container .searched-flights-container .flights .flight .carrier-info .pricing {
   width: 300px;
+  height: 70px;
   border-bottom: 1px solid rgba(71, 71, 71, 0.185);
   text-align: right;
   line-height: 68px;

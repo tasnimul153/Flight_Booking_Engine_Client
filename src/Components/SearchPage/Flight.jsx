@@ -94,9 +94,16 @@ const Flight = ({ flight, dictionaries, passengerAndClass }) => {
         const token = await getTokenFromBackend();
         const flightOffers = await fetchFlightOffers(token);
 
-        setMetaData(flightOffers);
+        setMetaData({
+            flight: flightOffers,
+            dictionary: dictionaries
+        });
 
-        console.log(`Flight Data: ${JSON.stringify(flightOffers)}`);
+        /*console.log(`Flight Data: ${JSON.stringify({
+            flight: flightOffers,
+            dictionary: dictionaries
+        })}`);*/
+        //console.log(`Flight Data: ${JSON.stringify(flightOffers)}`);
     }
 
     useEffect(() => {
@@ -139,7 +146,6 @@ const Flight = ({ flight, dictionaries, passengerAndClass }) => {
                             );
                         })
                     }
-
                 </div>
 
                 <div className="pricing">
@@ -229,7 +235,7 @@ const Flight = ({ flight, dictionaries, passengerAndClass }) => {
                     </div>
                     <div className="total-flight-duration">
                         {
-                            flight.itineraries[0].duration.split('T')[1].split('H')[0] + ` ${flight.itineraries[0].duration.split('T')[1].split('H')[0] > 9 ? 'Hours' : 'Hour'}` + ' ' + flight.itineraries[0].duration.split('T')[1].split('H')[1].split('M')[0] + `${flight.itineraries[0].duration.split('T')[1].split('H')[1].split('M')[0] > 9 ? ' Minutes' : ' Minute'}`
+                           // flight.itineraries[0].duration.split('T')[1].split('H')[0] + ` ${flight.itineraries[0].duration.split('T')[1].split('H')[0] > 9 ? 'Hours' : 'Hour'}` + ' ' + flight.itineraries[0].duration.split('T')[1].split('H')[1].split('M')[0] + `${flight.itineraries[0].duration.split('T')[1].split('H')[1].split('M')[0] > 9 ? ' Minutes' : ' Minute'}`
                         }
                     </div>
                 </div>

@@ -12,6 +12,8 @@ import { fetchAccessToken } from "../../FetchAPIs";
 import axios from 'axios';
 import axiosRetry from 'axios-retry';
 import Flight from "./Flight";
+import { Link } from "react-router-dom";
+
 
 const SearchPage = () => {
     const data = useLocation();
@@ -19,6 +21,7 @@ const SearchPage = () => {
     const searchParams = new URLSearchParams(data.search);
     const [accessToken, setAccessToken] = useState("");
     const [loading, setLoading] = useState(true);
+    const [dataAvailable, setDataAvailable] = useState(false);
 
     const [flightData, setFlightData] = useState({
         "data": [],
@@ -95,6 +98,7 @@ const SearchPage = () => {
     useEffect(() => {
         const fetchFlightOffers = async () => {
             setLoading(true); // Set loading to true before starting the fetch
+            setDataAvailable(false);
             try {
                 if (accessToken) {
                     const response = await axios.get(
@@ -107,7 +111,10 @@ const SearchPage = () => {
                         }
                     );
                     console.log(response.data);
-                    setFlightData(response.data);
+                    if (response.data.data.length > 0) {
+                        setDataAvailable(true);
+                        setFlightData(response.data);
+                    }
                 }
             } catch (error) {
                 console.error('Error fetching flight offers:', error);
@@ -143,155 +150,198 @@ const SearchPage = () => {
         <>
             {
                 loading ?
-                    <div className="loading">
-                        <div class="loader controller-loading">
-                            <div class="wrapper">
-                                <div class="circle"></div>
-                                <div class="line-1"></div>
-                                <div class="line-2"></div>
-                                <div class="line-3"></div>
-                                <div class="line-4"></div>
-                            </div>
-                            <div class="wrapper" style={{marginTop: "-100px"}}>
-                                <div class="circle"></div>
-                                <div class="line-1"></div>
-                                <div class="line-2"></div>
-                                <div class="line-3"></div>
-                                <div class="line-4"></div>
-                            </div>
-                        </div>
-                        <div class="loader">
-                            <div class="wrapper">
-                                <div class="circle"></div>
-                                <div class="line-1"></div>
-                                <div class="line-2"></div>
-                                <div class="line-3"></div>
-                                <div class="line-4"></div>
-                            </div>
-                            <div class="wrapper" style={{marginTop: "-100px"}}>
-                                <div class="circle"></div>
-                                <div class="line-1"></div>
-                                <div class="line-2"></div>
-                                <div class="line-3"></div>
-                                <div class="line-4"></div>
-                            </div>
-                        </div>
-                    </div> :
-                    <div className="Container">
-                        <div className="search-box-container">
-                            <div className="search-inputs">
-                                <div className="locFirst">
-                                    <Location
-                                        tag='From'
-                                        location={fromData.city}
-                                        airport={fromData.airport}
-                                        airportCode={fromData.airportCode}
-                                        onSelect={(city, country, airport, airportCode) => handleSelect('From', city, country, airport, airportCode)}
-                                    />
+                    <>
+                        <div className="loading" style={{marginBottom: "20px"}}>
+                            <div className="loader controller-loading">
+                                <div className="wrapper">
+                                    <div className="circle"></div>
+                                    <div className="line-1"></div>
+                                    <div className="line-2"></div>
+                                    <div className="line-3"></div>
+                                    <div className="line-4"></div>
                                 </div>
-                                <div className="locLast">
-                                    <Location
-                                        tag='To'
-                                        location={toData.city}
-                                        airport={toData.airport}
-                                        airportCode={toData.airportCode}
-                                        onSelect={(city, country, airport, airportCode) => handleSelect('To', city, country, airport, airportCode)}
-                                    />
+                                <div className="wrapper" style={{ marginTop: "-100px" }}>
+                                    <div className="circle"></div>
+                                    <div className="line-1"></div>
+                                    <div className="line-2"></div>
+                                    <div className="line-3"></div>
+                                    <div className="line-4"></div>
                                 </div>
-                                <div className="dateLast">
-                                    <DatePicker
-                                        tag='Departure'
-                                        date={departureDate.date}
-                                        day={departureDate.day}
-                                        active={true}
-                                        onSelect={(date, day) => handleDateSelect('Departure', date, day)}
-                                    />
+                            </div>
+                            <div className="loader">
+                                <div className="wrapper">
+                                    <div className="circle"></div>
+                                    <div className="line-1"></div>
+                                    <div className="line-2"></div>
+                                    <div className="line-3"></div>
+                                    <div className="line-4"></div>
                                 </div>
-                                <div className="dateLast">
-                                    <DatePicker
-                                        tag='Return'
-                                        date={returnDate.date}
-                                        day={returnDate.day}
-                                        active={radioValue === 'oneway' ? false : true}
-                                        onSelect={(date, day) => handleDateSelect('Return', date, day)}
-                                    />
-                                    {/*<AiOutlineSwap className="icon" onClick={onSwap} id='swapIcon' />*/}
-                                </div>
-                                <div className="lastPass">
-                                    <Passenger
-                                        tag='Passengers & Class'
-                                        passenger_count={passengerAndClass.passenger_count}
-                                        class_type={passengerAndClass.class_type}
-                                        onSelect={(passenger_count, class_type) => handlePassengerAndClassSelect(passenger_count, class_type)}
-                                    />
+                                <div className="wrapper" style={{ marginTop: "-100px" }}>
+                                    <div className="circle"></div>
+                                    <div className="line-1"></div>
+                                    <div className="line-2"></div>
+                                    <div className="line-3"></div>
+                                    <div className="line-4"></div>
                                 </div>
                             </div>
                         </div>
-                        <div className="searched-flights-container">
+                        <div className="loading">
+                            <div className="loader controller-loading">
+                                <div className="wrapper">
+                                    <div class="circle"></div>
+                                    <div class="line-1"></div>
+                                    <div class="line-2"></div>
+                                    <div class="line-3"></div>
+                                    <div class="line-4"></div>
+                                </div>
+                                <div class="wrapper" style={{ marginTop: "-100px" }}>
+                                    <div className="circle"></div>
+                                    <div className="line-1"></div>
+                                    <div className="line-2"></div>
+                                    <div className="line-3"></div>
+                                    <div className="line-4"></div>
+                                </div>
+                            </div>
+                            <div className="loader">
+                                <div className="wrapper">
+                                    <div className="circle"></div>
+                                    <div className="line-1"></div>
+                                    <div className="line-2"></div>
+                                    <div className="line-3"></div>
+                                    <div className="line-4"></div>
+                                </div>
+                                <div className="wrapper" style={{ marginTop: "-100px" }}>
+                                    <div className="circle"></div>
+                                    <div className="line-1"></div>
+                                    <div className="line-2"></div>
+                                    <div className="line-3"></div>
+                                    <div className="line-4"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </> : dataAvailable ?
+                        <div className="Container">
+                            <div className="search-box-container">
+                                <div className="search-inputs">
+                                    <div className="locFirst">
+                                        <Location
+                                            tag='From'
+                                            location={fromData.city}
+                                            airport={fromData.airport}
+                                            airportCode={fromData.airportCode}
+                                            onSelect={(city, country, airport, airportCode) => handleSelect('From', city, country, airport, airportCode)}
+                                        />
+                                    </div>
+                                    <div className="locLast">
+                                        <Location
+                                            tag='To'
+                                            location={toData.city}
+                                            airport={toData.airport}
+                                            airportCode={toData.airportCode}
+                                            onSelect={(city, country, airport, airportCode) => handleSelect('To', city, country, airport, airportCode)}
+                                        />
+                                    </div>
+                                    <div className="dateLast">
+                                        <DatePicker
+                                            tag='Departure'
+                                            date={departureDate.date}
+                                            day={departureDate.day}
+                                            active={true}
+                                            onSelect={(date, day) => handleDateSelect('Departure', date, day)}
+                                        />
+                                    </div>
+                                    <div className="dateLast">
+                                        <DatePicker
+                                            tag='Return'
+                                            date={returnDate.date}
+                                            day={returnDate.day}
+                                            active={radioValue === 'oneway' ? false : true}
+                                            onSelect={(date, day) => handleDateSelect('Return', date, day)}
+                                        />
+                                        {/*<AiOutlineSwap className="icon" onClick={onSwap} id='swapIcon' />*/}
+                                    </div>
+                                    <div className="lastPass">
+                                        <Passenger
+                                            tag='Passengers & Class'
+                                            passenger_count={passengerAndClass.passenger_count}
+                                            class_type={passengerAndClass.class_type}
+                                            onSelect={(passenger_count, class_type) => handlePassengerAndClassSelect(passenger_count, class_type)}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="searched-flights-container">
 
-                            <div className="controller">
-                                <div className="controller-container">
-                                    <div className="filter-flights">
-                                        <span className="ct-title">Flights </span><span className="flight-count">({Object.keys(flightData.dictionaries.carriers).length})</span>
-                                        <div className="flight-filter-box">
-                                            {
-                                                Object.entries(flightData.dictionaries.carriers).map(([carrierId, carrierName], index) => {
-                                                    return (
-                                                        <div className="carrier" key={index}>
-                                                            <input type="checkbox" value={carrierId} onChange={triggureFilter} />
-                                                            <label htmlFor="">{carrierName}</label>
-                                                        </div>
-                                                    );
-                                                })
-                                            }
+                                <div className="controller">
+                                    <div className="controller-container">
+                                        <div className="filter-flights">
+                                            <span className="ct-title">Flights </span><span className="flight-count">({Object.keys(flightData.dictionaries.carriers).length})</span>
+                                            <div className="flight-filter-box">
+                                                {
+                                                    Object.entries(flightData.dictionaries.carriers).map(([carrierId, carrierName], index) => {
+                                                        return (
+                                                            <div className="carrier" key={index}>
+                                                                <input type="checkbox" value={carrierId} onChange={triggureFilter} />
+                                                                <label htmlFor="">{carrierName}</label>
+                                                            </div>
+                                                        );
+                                                    })
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="sort-by-price-container">
+                                        <h3 className="sp-title">Sort by price</h3>
+                                        <div className="radio-sort">
+                                            <input type="radio" className="lowToHigh" checked value={1} onChange={triggureFilter} />
+                                            <label htmlFor="">Low to high</label>
+                                        </div>
+                                        <div className="radio-sort">
+                                            <input type="radio" className="highToLow" value={2} onChange={triggureFilter} />
+                                            <label htmlFor="" className="lb2">High to low</label>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="sort-by-price-container">
-                                    <h3 className="sp-title">Sort by price</h3>
-                                    <div className="radio-sort">
-                                        <input type="radio" className="lowToHigh" checked value={1} onChange={triggureFilter} />
-                                        <label htmlFor="">Low to high</label>
-                                    </div>
-                                    <div className="radio-sort">
-                                        <input type="radio" className="highToLow" value={2} onChange={triggureFilter} />
-                                        <label htmlFor="" className="lb2">High to low</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="flights">
-                                {
-                                    flightData.data.map((flight, index) => {
-                                        if ((filterFlights.length === 0)) {
-                                            return (
-                                                <Flight
-                                                    key={index}
-                                                    flight={flight}
-                                                    dictionaries={flightData.dictionaries}
-                                                    passengerAndClass={passengerAndClass}
-                                                />
-                                            );
-                                        } else {
-                                            for (let i = 0; i < flight.validatingAirlineCodes.length; i++) {
-                                                if (filterFlights.includes(flight.validatingAirlineCodes[i])) {
-                                                    return (
-                                                        <Flight
-                                                            key={index}
-                                                            flight={flight}
-                                                            dictionaries={flightData.dictionaries}
-                                                            passengerAndClass={passengerAndClass}
-                                                        //onSelect={(flight) => handleFlightDetailSelect(flight)}
-                                                        />
-                                                    );
+                                <div className="flights">
+                                    {
+                                        flightData.data.map((flight, index) => {
+                                            if ((filterFlights.length === 0)) {
+                                                return (
+                                                    <Flight
+                                                        key={index}
+                                                        flight={flight}
+                                                        dictionaries={flightData.dictionaries}
+                                                        passengerAndClass={passengerAndClass}
+                                                    />
+                                                );
+                                            } else {
+                                                for (let i = 0; i < flight.validatingAirlineCodes.length; i++) {
+                                                    if (filterFlights.includes(flight.validatingAirlineCodes[i])) {
+                                                        return (
+                                                            <Flight
+                                                                key={index}
+                                                                flight={flight}
+                                                                dictionaries={flightData.dictionaries}
+                                                                passengerAndClass={passengerAndClass}
+                                                            />
+                                                        );
+                                                    }
                                                 }
                                             }
-                                        }
-                                    })
-                                }
+                                        })
+                                    }
 
+                                </div>
                             </div>
+                        </div> :
+                        <div className="container-unavailable">
+                            <div className="unavailable">
+                                <h1>Sorry, no flights available</h1>
+                            </div>
+                            <Link to='/'>
+                                <button>Go back</button>
+                            </Link>
                         </div>
-                    </div>
             }
         </>
     );

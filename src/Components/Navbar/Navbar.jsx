@@ -16,6 +16,7 @@ const Navbar = () => {
   const [active, setActive] = useState("navBar");
   const [navBarBackground, setNavBarBackground] = useState("transparent");
   const [signupButtonClicked, setSignupButtonClicked] = useState(false);
+  const [toggleButtonColor, setToggleButtonColor] = useState("black");
 
   useEffect(() => {
     if (location.pathname === "/") {
@@ -24,12 +25,13 @@ const Navbar = () => {
       setButtonClass("signupButtonHomePage");
       setLogoClass("logoHomePage");
       setNavBarBackground("transparent");
-
+      setToggleButtonColor("black");
     } else {
       // Other Pages
       setNavLink("navLinkOthers");
       setButtonClass("signupButtonOtherPage");
       setLogoClass("logoOtherPage");
+      setNavBarBackground("white");
       if (signupButtonClicked) {
         setNavBarBackground('url("../../Assets/image-from-rawpixel-id-3713064-original.png")');
       } else {
@@ -73,7 +75,9 @@ const Navbar = () => {
           <div className={active}>
             <ul className="navLists flex">
               <li className="navItem">
-                <a href="#" className={navLink}>HOME</a>
+                <Link to='/'>
+                  <a href="#" className={navLink}>HOME</a>
+                </Link>
               </li>
               <li className="navItem">
                 <a href="#" className={navLink}>SERVICES</a>
@@ -87,7 +91,7 @@ const Navbar = () => {
 
           {/* Toggle Navigation Bar */}
           <div className="toggleNavBar" onClick={showNav}>
-            <HiBars3BottomRight className="icon" />
+            <HiBars3BottomRight className="icon" style={{color: toggleButtonColor}} />
           </div>
         </header>
       </section>

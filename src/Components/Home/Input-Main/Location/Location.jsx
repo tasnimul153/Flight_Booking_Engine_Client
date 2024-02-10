@@ -2,9 +2,6 @@ import React, { useEffect, useState, useRef, useContext } from 'react';
 import { MdArrowDropDown } from 'react-icons/md';
 import { AiOutlineSearch } from 'react-icons/ai';
 import DropdownLocation from '../../Input-Dropdown/DropdownLocation';
-import NearestAirports from './NearestAirports';
-import SearchedAirpots from './SearchedAirports';
-import { fetchAccessToken } from '../../../../FetchAPIs';
 import { debounce } from 'lodash';
 import { NearestAirportsListContext } from '../../../../App'; // Context for nearest airports list
 
